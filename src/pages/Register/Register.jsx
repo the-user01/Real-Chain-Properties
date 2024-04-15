@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const hanldeRegister = e => {
         e.preventDefault();
@@ -17,14 +18,21 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
 
-        console.log(name, photoUrl, email, password);
-
         createUser(email, password)
-        .then(result => console.log(result.user))
-        .catch(error => console.log(error))
+            .then(result => {
+                console.log(result.user);
+
+                updateUser(name, photoUrl)
+                .then(()=> console.log("Profile Updated"))
+                .catch(error => console.log(error))
+
+            })
+            .catch(error => console.log(error))
+
 
         e.target.reset();
 
+        navigate('/')
     }
 
     return (

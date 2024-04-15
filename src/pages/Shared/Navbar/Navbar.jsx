@@ -43,10 +43,10 @@ const Navbar = () => {
                             {
                                 loader ? <span className="loading loading-dots loading-sm"></span> :
                                     <>
-                                        <div className="tooltip tooltip-bottom mr-4" data-tip="hello">
+                                        <div className="tooltip tooltip-bottom mr-4" data-tip={user.displayName}>
                                             <div className="avatar">
                                                 <div className="w-12 rounded-full">
-                                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                                    <img src={user.photoURL} />
                                                 </div>
                                             </div>
                                         </div>
