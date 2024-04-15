@@ -1,14 +1,22 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import demoImg from '../../../assets/user.png';
 
 const Navbar = () => {
+
+    const { user, logOut, loader } = useContext(AuthContext);
 
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/about'>About</NavLink></li>
-    
+
     </>
 
-
+    const handleLogOut = () => {
+        logOut()
+            .catch(error => console.log(error))
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -25,11 +33,41 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {navList}
+                    {navList}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className="btn btn-ghost">Login</button></Link>
+                {
+                    user ?
+                        <>
+                            {
+                                loader ? <span className="loading loading-dots loading-sm"></span> :
+                                    <>
+                                        <div className="tooltip tooltip-bottom mr-4" data-tip="hello">
+                                            <div className="avatar">
+                                                <div className="w-12 rounded-full">
+                                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button className="btn btn-primary" onClick={handleLogOut}>SignOut</button>
+                                    </>
+                            }
+                        </>
+                        :
+                        <>
+                            {loader ?  <span className="loading loading-dots loading-sm text-center"></span> :
+                            <>
+                                <div className="avatar mr-4">
+                                    <div className="w-12 rounded-full">
+                                        <img src={demoImg} />
+                                    </div>
+                                </div>
+                                <Link to='/login'><button className="btn btn-primary">Login</button></Link>
+                            </>}
+                        </>
+                }
             </div>
         </div>
     );

@@ -1,7 +1,32 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext)
+
+    const hanldeRegister = e => {
+        e.preventDefault();
+
+        const form = new FormData(e.currentTarget);
+
+        const name = form.get('name');
+        const photoUrl = form.get('photoUrl');
+        const email = form.get('email');
+        const password = form.get('password');
+
+        console.log(name, photoUrl, email, password);
+
+        createUser(email, password)
+        .then(result => console.log(result.user))
+        .catch(error => console.log(error))
+
+        e.target.reset();
+
+    }
+
     return (
         <div>
             <Helmet>
@@ -14,7 +39,7 @@ const Register = () => {
                         <h1 className="text-4xl font-bold">Register now!</h1>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form className="card-body" onSubmit={hanldeRegister}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -40,7 +65,7 @@ const Register = () => {
                                 <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                               <Link to='/login'><button className="btn btn-primary w-full">Register</button></Link>
+                                <button className="btn btn-primary w-full">Register</button>
                             </div>
                         </form>
 
