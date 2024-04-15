@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate()
@@ -29,6 +31,23 @@ const Login = () => {
 
         e.target.reset()
 
+    }
+
+
+    const handleGoogleLogin = ()=>{
+        googleSignIn()
+        .then(()=>{
+            navigate(location?.state ? location.state : '/');
+        })
+        .catch(error => console.log(error))
+    }
+
+    const handleGithubLogin = ()=>{
+        githubSignIn()
+        .then(()=>{
+            navigate(location?.state ? location.state : '/');
+        })
+        .catch(error => console.log(error))
     }
 
 
@@ -61,12 +80,20 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-outline btn-primary">Login</button>
                             </div>
                         </form>
 
+                        <div className="mx-2 mb-4">
+                            <button className="btn btn-outline btn-success w-full text-lg" onClick={handleGoogleLogin}><FaGoogle /> Google</button>
+                        </div>
+
+                        <div className="mx-2">
+                            <button className="btn btn-outline btn-warning w-full text-lg" onClick={handleGithubLogin}><FaGithub /> Github</button>
+                        </div>
+
                         <div  className="text-center p-4">
-                            <p>Don&apos;t have any account? Please<Link to='/register'><button className="btn btn-link">Register</button></Link></p>
+                            <p>Don&apos;t have any account? Please<Link to='/register'><button className="btn btn-link font-bold">Register</button></Link></p>
                         </div>
                     </div>
                 </div>

@@ -73,12 +73,12 @@ const Register = () => {
                                 <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary w-full">Register</button>
+                                <button className="btn btn-outline btn-primary w-full">Register</button>
                             </div>
                         </form>
 
                         <div className="text-center p-4">
-                            <p>Already have an account? Please<Link to='/login'><button className="btn btn-link">Login</button></Link></p>
+                            <p>Already have an account? Please<Link to='/login'><button className="btn btn-link font-bold">Login</button></Link></p>
                         </div>
                     </div>
                 </div>
