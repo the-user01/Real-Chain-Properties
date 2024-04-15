@@ -1,0 +1,58 @@
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+
+const Register = () => {
+    return (
+        <div>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
+
+            <div className="hero min-h-screen bg-base-200 pb-6">
+                <div className="hero-content flex-col">
+                    <div className="text-center mt-6 mb-6">
+                        <h1 className="text-4xl font-bold">Register now!</h1>
+                    </div>
+                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <form className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" name="name" placeholder="Enter Your Name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">PhotoUrl</span>
+                                </label>
+                                <input type="text" name="photoUrl" placeholder="Insert Your Photo URL here" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control mt-6">
+                               <Link to='/login'><button className="btn btn-primary w-full">Register</button></Link>
+                            </div>
+                        </form>
+
+                        <div className="text-center p-4">
+                            <p>Already have an account? Please<Link to='/login'><button className="btn btn-link">Login</button></Link></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
+export default Register;
