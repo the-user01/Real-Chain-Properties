@@ -1,18 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Login = () => {
 
-    const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
+
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const location = useLocation();
     const navigate = useNavigate()
 
-    const hanldeLogin = e =>{
+    const hanldeLogin = e => {
         e.preventDefault();
 
         const form = new FormData(e.currentTarget);
@@ -21,33 +28,36 @@ const Login = () => {
         const password = form.get('password');
 
         signIn(email, password)
-        .then(result => {
-            console.log(result.user);
+            .then(() => {
+                toast.success("Login Successful");
 
-            navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/');
 
-        })
-        .catch(error => console.log(error.message))
+            })
+            .catch(error => console.log(error.message))
 
         e.target.reset()
 
     }
 
 
-    const handleGoogleLogin = ()=>{
+    const handleGoogleLogin = () => {
         googleSignIn()
-        .then(()=>{
-            navigate(location?.state ? location.state : '/');
-        })
-        .catch(error => console.log(error))
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+                toast.success("Login Successful");
+            })
+            .catch(error => console.log(error))
     }
 
-    const handleGithubLogin = ()=>{
+    const handleGithubLogin = () => {
         githubSignIn()
-        .then(()=>{
-            navigate(location?.state ? location.state : '/');
-        })
-        .catch(error => console.log(error))
+            .then(() => {
+                toast.success("Login Successful");
+
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -74,7 +84,21 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <div className="relative">
+                                    <input
+                                        type={
+                                            showPassword ? 'text' : 'password'
+                                        }
+                                        name="password"
+                                        placeholder="Password"
+                                        className="input input-bordered w-full" required />
+
+                                    <span className="absolute top-4 right-2 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                        {
+                                            showPassword ? <FaEyeSlash /> : <FaEye />
+                                        }
+                                    </span>
+                                </div>
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -92,12 +116,13 @@ const Login = () => {
                             <button className="btn btn-outline btn-warning w-full text-lg" onClick={handleGithubLogin}><FaGithub /> Github</button>
                         </div>
 
-                        <div  className="text-center p-4">
+                        <div className="text-center p-4">
                             <p>Don&apos;t have any account? Please<Link to='/register'><button className="btn btn-link font-bold">Register</button></Link></p>
                         </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

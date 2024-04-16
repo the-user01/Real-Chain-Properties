@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+
 
 const Register = () => {
 
     const { createUser, updateUser } = useContext(AuthContext)
+
+    const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate()
 
     const hanldeRegister = e => {
@@ -18,17 +25,29 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
 
+        if (password.length < 6) {
+            toast.error('Password should be atleast 6 characters');
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Password should be atleast one uppercase characters');
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error('Password should be atleast one lowercase characters');
+            return;
+        }
+
         createUser(email, password)
-            .then(result => {
-                console.log(result.user);
-
+            .then(() => {
+                
                 updateUser(name, photoUrl)
-                .then(()=> console.log("Profile Updated"))
+                .then(() => console.log("Profile Updated"))
                 .catch(error => console.log(error))
-
+                
+                return toast.success("User Registration Successful");
             })
             .catch(error => console.log(error))
-
 
         e.target.reset();
 
@@ -70,7 +89,21 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                                <div className="relative">
+                                    <input
+                                        type={
+                                            showPassword ? 'text' : 'password'
+                                        }
+                                        name="password"
+                                        placeholder="Password"
+                                        className="input input-bordered w-full" required />
+
+                                    <span className="absolute top-4 right-2 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                        {
+                                            showPassword ? <FaEyeSlash /> : <FaEye />
+                                        }
+                                    </span>
+                                </div>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-outline btn-primary w-full">Register</button>
@@ -80,10 +113,11 @@ const Register = () => {
                         <div className="text-center p-4">
                             <p>Already have an account? Please<Link to='/login'><button className="btn btn-link font-bold">Login</button></Link></p>
                         </div>
+
                     </div>
                 </div>
             </div>
-
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
