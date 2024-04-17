@@ -8,9 +8,14 @@ const Navbar = () => {
     const { user, logOut, loader } = useContext(AuthContext);
 
     const navList = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/about'>About</NavLink></li>
+        <li className="mr-4"><NavLink to='/'>Home</NavLink></li>
+        <li className="mr-4"><NavLink to='/about'>About</NavLink></li>
 
+        {
+            user && <>
+                <li className="mr-4"><NavLink to='/userProfile'>User Profile</NavLink></li>
+            </>
+        }
     </>
 
     const handleLogOut = () => {
@@ -29,7 +34,7 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Something</a>
+                <a className="btn btn-ghost text-xl">RealChainProperties</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -57,15 +62,15 @@ const Navbar = () => {
                         </>
                         :
                         <>
-                            {loader ?  <span className="loading loading-dots loading-sm text-center"></span> :
-                            <>
-                                <div className="avatar mr-4">
-                                    <div className="w-12 rounded-full">
-                                        <img src={demoImg} />
+                            {loader ? <span className="loading loading-dots loading-sm text-center"></span> :
+                                <>
+                                    <div className="avatar mr-4">
+                                        <div className="w-12 rounded-full">
+                                            <img src={demoImg} />
+                                        </div>
                                     </div>
-                                </div>
-                                <Link to='/login'><button className="btn btn-primary">Login</button></Link>
-                            </>}
+                                    <Link to='/login'><button className="btn btn-primary">Login</button></Link>
+                                </>}
                         </>
                 }
             </div>

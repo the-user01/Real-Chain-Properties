@@ -4,7 +4,8 @@ import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const PrivateRoutes = ({children}) => {
+const PrivateRoutes = ({children}) => { 
+    
 
     const {user, loader} = useContext(AuthContext);
 

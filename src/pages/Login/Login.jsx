@@ -17,7 +17,7 @@ const Login = () => {
 
 
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const hanldeLogin = e => {
         e.preventDefault();

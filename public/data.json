@@ -1,0 +1,111 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/MfHythp/photo-1553413077-190dd305871c.jpg",
+      "estate_title": "Modern Warehousing Facility",
+      "segment_name": "Warehouses",
+      "description": "State-of-the-art warehouse facility with advanced security systems, ample loading docks, and spacious storage areas. Ideal for logistics companies and distribution centers.",
+      "price": 5000000,
+      "status": "sale",
+      "area": 5000,
+      "location": "Industrial Zone A",
+      "facilities": ["loading docks", "security systems", "spacious storage"]
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/tD875bg/photo-1495292312634-1531ba4dc949.jpg",
+      "estate_title": "Large-scale Manufacturing Plant",
+      "segment_name": "Factories",
+      "description": "Fully equipped manufacturing plant suitable for mass production. Features include heavy-duty machinery, assembly lines, and administrative offices.",
+      "price": 10000000,
+      "status": "sale",
+      "area": 10000,
+      "location": "Industrial Zone B",
+      "facilities": ["machinery", "assembly lines", "office space"]
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/8Brj9QM/photo-1648763370514-6d7a56f0804a.jpg",
+      "estate_title": "Integrated Industrial Park",
+      "segment_name": "Industrial Parks",
+      "description": "Comprehensive industrial park offering a range of facilities including warehouses, factories, and office spaces. Strategically located with easy access to transportation routes.",
+      "price": 20000000,
+      "status": "sale",
+      "area": 15000,
+      "location": "Industrial Zone C",
+      "facilities": ["warehouses", "factories", "office spaces"]
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/wWBSXqK/photo-1592228533283-d78f7c1cf453.jpg",
+      "estate_title": "Cold Storage Facility",
+      "segment_name": "Cold Storage Facilities",
+      "description": "Temperature-controlled storage facility suitable for perishable goods. Equipped with refrigeration units, monitoring systems, and loading docks.",
+      "price": 8000000,
+      "status": "rent",
+      "area": 3000,
+      "location": "Industrial Zone D",
+      "facilities": ["refrigeration units", "monitoring systems", "loading docks"]
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/zRwT086/photo-1614001964257-1bcd4504467e.jpg",
+      "estate_title": "Renewable Energy Power Plant",
+      "segment_name": "Power Plants",
+      "description": "Green energy power plant utilizing renewable sources such as solar and wind. Capable of supplying electricity to industrial complexes and commercial properties.",
+      "price": 30000000,
+      "status": "sale",
+      "area": 20000,
+      "location": "Industrial Zone E",
+      "facilities": ["solar panels", "wind turbines", "power distribution systems"]
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/j87ZwfP/premium-photo-1682146425651-8f25d55e9e29.jpg",
+      "estate_title": "High-Capacity Storage Facility",
+      "segment_name": "Warehouses",
+      "description": "Spacious warehouse facility with high ceilings and extensive racking systems. Suitable for bulk storage and distribution.",
+      "price": 6000000,
+      "status": "sale",
+      "area": 7000,
+      "location": "Industrial Zone F",
+      "facilities": ["high ceilings", "racking systems", "loading docks"]
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/WxkQ15R/premium-photo-1661962751752-cbf6a170c837.jpg",
+      "estate_title": "Specialized Production Plant",
+      "segment_name": "Production Plants",
+      "description": "Custom-built production plant designed for specialized manufacturing processes. Includes clean rooms, laboratories, and quality control areas.",
+      "price": 12000000,
+      "status": "sale",
+      "area": 12000,
+      "location": "Industrial Zone G",
+      "facilities": ["clean rooms", "laboratories", "quality control areas"]
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/m8CVS5q/premium-photo-1661495656832-bb15e0f7e615.jpg",
+      "estate_title": "Urban Warehouse Space",
+      "segment_name": "Warehouses",
+      "description": "Modern warehouse space located in the heart of the city. Ideal for last-mile logistics and e-commerce fulfillment centers.",
+      "price": 7000000,
+      "status": "rent",
+      "area": 4000,
+      "location": "Industrial Zone H",
+      "facilities": ["urban location", "proximity to transportation hubs", "loading docks"]
+    },
+    {
+      "id": 9,
+      "image": "https://i.ibb.co/sszhCbh/premium-photo-1661954639355-4a9d1e9f8590.jpg",
+      "estate_title": "Frozen Food Storage Facility",
+      "segment_name": "Cold Storage Facilities",
+      "description": "Specialized cold storage facility equipped with blast freezers and cold rooms. Suitable for storing frozen food products.",
+      "price": 10000000,
+      "status": "sale",
+      "area": 5000,
+      "location": "Industrial Zone I",
+      "facilities": ["blast freezers", "cold rooms", "monitoring systems"]
+    }
+  ]
+  

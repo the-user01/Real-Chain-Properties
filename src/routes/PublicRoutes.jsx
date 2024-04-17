@@ -6,6 +6,11 @@ import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import UpdateProfile from "../pages/Home/UpdateProfile";
+import UserProfile from "../pages/Home/UserProfile";
+import About from "../pages/Home/About";
+import PropertyDetails from "../pages/Home/PropertyDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 
   const router = createBrowserRouter([
@@ -16,7 +21,17 @@ import Register from "../pages/Register/Register";
         children: [
             {
                 path:'/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('/data.json')
+            },
+            {
+                path:'/properties/:id',
+                element: <PrivateRoutes><PropertyDetails></PropertyDetails></PrivateRoutes>,
+                loader: () => fetch('/data.json')
+            },
+            {
+                path:'/about',
+                element: <About></About>
             },
             {
                 path: '/login',
@@ -25,6 +40,14 @@ import Register from "../pages/Register/Register";
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/updateProfile',
+                element: <UpdateProfile></UpdateProfile>
+            },
+            {
+                path: '/userProfile',
+                element: <UserProfile>  </UserProfile>
             },
         ]
     }
