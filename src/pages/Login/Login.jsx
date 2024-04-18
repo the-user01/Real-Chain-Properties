@@ -28,13 +28,13 @@ const Login = () => {
         const password = form.get('password');
 
         signIn(email, password)
+
             .then(() => {
-                toast.success("Login Successful");
-
                 navigate(location?.state ? location.state : '/');
-
+                toast.success("Login Successful");
             })
-            .catch(error => console.log(error.message))
+            .catch(() => toast.error("Invalid Email or Password"))
+
 
         e.target.reset()
 
